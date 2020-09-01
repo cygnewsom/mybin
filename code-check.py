@@ -29,6 +29,7 @@ def getServices():
         for line in lines:
             p = line.split('/')
             if (p[0] == 'common') or (p[0] == 'web'):
+                global web_flag
                 web_flag = True
             elif p[0] in services:
                 my_services.append(p[0])
@@ -85,6 +86,7 @@ if __name__ == "__main__":
         runFmt(service)
         runLint(service)
     if web_flag:
+        print "run common"
         runFmt("", web_flag)
         runLint("", web_flag)
     summary()
